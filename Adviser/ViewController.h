@@ -10,6 +10,9 @@
 
 @interface ViewController : UIViewController
 
+@property (nonatomic, strong, readonly) NSArray* texts;
+@property (nonatomic, strong, readonly) NSArray* backColors;
+
 
 @end
 
