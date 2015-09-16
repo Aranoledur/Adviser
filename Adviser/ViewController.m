@@ -31,8 +31,8 @@
     self.mainLabel.text = [self.texts objectAtIndex:self.textIndex];
     self.mainView.backgroundColor = [self.backColors objectAtIndex:self.colorsIndex];
     
-    self.mainLabel.center = CGPointMake([self.mainView bounds].size.width/2, [self.mainView bounds].size.height*1/4);
-    self.nextButton.center = CGPointMake([self.mainView bounds].size.width/2, [self.mainView bounds].size.height*3/4);
+//    self.mainLabel.center = CGPointMake([self.mainView bounds].size.width/2, [self.mainView bounds].size.height*1/4);
+//    self.nextButton.center = CGPointMake([self.mainView bounds].size.width/2, [self.mainView bounds].size.height*3/4);
 }
 
 - (void)didReceiveMemoryWarning {
