@@ -34,5 +34,17 @@
         "email": "",
         "city": "Amsterdam",
         "url": ""
+    },
+    {
+        "userId": 29,
+        "lat": 52.485570,
+        "long": 13.320040,
+        "radius": 3000,
+        "owner": "Aileen Hammer",
+        "address": "",
+        "tel": "",
+        "email": "",
+        "city": "Berlin",
+        "url": ""
     }
 ]
