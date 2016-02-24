@@ -46,5 +46,29 @@
         "email": "",
         "city": "Berlin",
         "url": ""
+    },
+    {
+        "userId": 33,
+        "lat": 52.505694,
+        "long": 13.432722,
+        "radius": 3000,
+        "owner": "Kaffee Helden GbR (1/2)",
+        "address": "Eberhard-Roters-Platz 13, Berlin 10965",
+        "tel": "+49 (0) 178 5665950",
+        "email": "simon.heidrich@coffee-bike.com",
+        "city": "Berlin",
+        "url": "kaffeehelden-berlin"
+    },
+    {
+        "userId": 69,
+        "lat": 52.474361,
+        "long": 13.391583,
+        "radius": 3000,
+        "owner": "Kaffee Helden GbR (2/2)",
+        "address": "Eberhard-Roters-Platz 13, Berlin 10965",
+        "tel": "+49 (0) 178 5665950",
+        "email": "simon.heidrich@coffee-bike.com",
+        "city": "Berlin",
+        "url": "kaffeehelden-berlin"
     }
 ]
