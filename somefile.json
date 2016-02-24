@@ -22,5 +22,17 @@
         "email": "",
         "city": "Altlandsberg",
         "url": ""
+    },
+    {
+        "userId": 82,
+        "lat": 52.370216,
+        "long": 4.895168,
+        "radius": 3000,
+        "owner": "VDV-Shipping B.V.",
+        "address": "",
+        "tel": "",
+        "email": "",
+        "city": "Amsterdam",
+        "url": ""
     }
 ]
