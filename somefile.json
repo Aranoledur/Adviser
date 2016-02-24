@@ -1,0 +1,26 @@
+[
+    {
+        "userId": 111,
+        "lat": 52.092346,
+        "long": 6.976373,
+        "radius": 3000,
+        "owner": "Hr. & Fr. Ten Peze",
+        "address": "",
+        "tel": "",
+        "email": "",
+        "city": "Ahaus",
+        "url": ""
+    },
+    {
+        "userId": 125,
+        "lat": 52.555071,
+        "long": 13.727736,
+        "radius": 3000,
+        "owner": "Frank Stanislowsky",
+        "address": "",
+        "tel": "",
+        "email": "",
+        "city": "Altlandsberg",
+        "url": ""
+    }
+]
