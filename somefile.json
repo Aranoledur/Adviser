@@ -15,7 +15,7 @@
         "userId": 125,
         "lat": 52.555071,
         "long": 13.727736,
-        "radius": 3000,
+        "radius": 10,
         "owner": "Frank Stanislowsky",
         "address": "",
         "tel": "",
