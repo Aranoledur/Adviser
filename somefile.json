@@ -82,5 +82,17 @@
         "email": "wolfgang.wahl@coffee-bike.com",
         "city": "Arakesh",
         "url": "wahl-bonn"
+    },
+    {
+        "userId": 145,
+        "lat": 50.697106,
+        "long": 7.128589,
+        "radius": 10,
+        "owner": "Golfgang Wahl",
+        "address": "Zeller StraГџe 16, 53175 Bonn",
+        "tel": "+49 (0) 163 2927412",
+        "email": "wolfgang.wahl@coffee-bike.com",
+        "city": "Arakesh",
+        "url": "wahl-bonn"
     }
 ]
