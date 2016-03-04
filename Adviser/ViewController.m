@@ -32,15 +32,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    self.texts = [NSArray arrayWithObjects:@"Be be be", @"Be be be Be be be Be be be Be be be Be be be Be be be Be be be ", @"Be be be Be be be Be be be ", nil];
-    self.backColors = [NSArray arrayWithObjects:[UIColor colorWithRed:177.f/255 green:246.f/255 blue:165.f/255 alpha:1.f], [UIColor colorWithRed:246.f/255 green:236.f/255 blue:164.f/255 alpha:1.f], nil];
+    AppDelegate* app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.texts = [[NSArray alloc] initWithArray:app.advices copyItems:YES];
+    self.backColors = [[NSArray alloc] initWithArray:app.colors copyItems:YES];
     
     self.mainLabel.text = [self.texts objectAtIndex:self.textIndex];
     self.mainView.backgroundColor = [self.backColors objectAtIndex:self.colorsIndex];
-    
-//    self.mainLabel.center = CGPointMake([self.mainView bounds].size.width/2, [self.mainView bounds].size.height*1/4);
-//    self.nextButton.center = CGPointMake([self.mainView bounds].size.width/2, [self.mainView bounds].size.height*3/4);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,7 +75,6 @@
     AppDelegate* app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.texts = [[NSArray alloc] initWithArray:app.advices copyItems:YES];
     self.backColors = [[NSArray alloc] initWithArray:app.colors copyItems:YES];
-    [self nextButtonTouched:nil];
 }
 
 @end

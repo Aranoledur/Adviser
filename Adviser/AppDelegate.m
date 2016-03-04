@@ -20,10 +20,37 @@
     return _colors;
 }
 
+-(void)loadJSON:(NSData *)data {
+    NSError *error = nil;
+    NSDictionary* ads = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+    if (error) {
+        return;
+    }
+    
+    self.advices = [ads objectForKey:@"advices"];
+    NSArray* colors = [ads objectForKey:@"colors"];
+    
+    [self.colors removeAllObjects];
+    for (NSDictionary* color in colors) {
+        
+        NSNumber* r = [color objectForKey:@"r"];
+        NSNumber* g = [color objectForKey:@"g"];
+        NSNumber* b = [color objectForKey:@"b"];
+        UIColor* color = [[UIColor alloc] initWithRed:[r intValue]/255.f green:[g intValue]/255.f blue:[b intValue]/255.f alpha:1.f];
+        [self.colors addObject:color];
+    }
+}
+
+-(void)getLocalDataForView {
+    NSString* filePath = [[NSBundle mainBundle] pathForResource:@"somefile" ofType:@"json"];
+    
+    NSData* data = [NSData dataWithContentsOfFile:filePath];
+    [self loadJSON:data];
+}
+
 -(void) getDataForView {
     
     NSURLSession* session = [NSURLSession sharedSession];
-//    NSString* filePath = [[NSBundle mainBundle] pathForResource:@"somefile" ofType:@"json"];
     NSURL* url = [NSURL URLWithString:@"https://raw.githubusercontent.com/Aranoledur/Adviser/master/Adviser/somefile.json"];
     NSURLSessionTask* task = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
@@ -31,22 +58,8 @@
             NSLog(@"bad data");
             return;
         }
+        [self loadJSON:data];
         
-        NSDictionary* ads = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-        
-        self.advices = [ads objectForKey:@"advices"];
-        NSArray* colors = [ads objectForKey:@"colors"];
-        
-        [self.colors removeAllObjects];
-        for (NSDictionary* color in colors) {
-            
-            NSLog(@"dic %@", color);
-            NSNumber* r = [color objectForKey:@"r"];
-            NSNumber* g = [color objectForKey:@"g"];
-            NSNumber* b = [color objectForKey:@"b"];
-            UIColor* color = [[UIColor alloc] initWithRed:[r intValue]/255.f green:[g intValue]/255.f blue:[b intValue]/255.f alpha:1.f];
-            [self.colors addObject:color];
-        }
         dispatch_async(dispatch_get_main_queue(), ^{
             
             [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationName" object:nil];
@@ -58,6 +71,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self getDataForView];
+    [self getLocalDataForView];
     return YES;
 }
 
