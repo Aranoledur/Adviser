@@ -24,10 +24,10 @@
     NSError *error = nil;
     NSDictionary* ads = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
     if (error) {
+        NSLog(@"bad json");
         return false;
     }
     
-    NSLog(@"json: %@", ads);
     self.advices = [ads objectForKey:@"advices"];
     NSArray* colors = [ads objectForKey:@"colors"];
     
