@@ -20,13 +20,14 @@
     return _colors;
 }
 
--(void)loadJSON:(NSData *)data {
+-(BOOL)loadJSON:(NSData *)data {
     NSError *error = nil;
     NSDictionary* ads = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
     if (error) {
-        return;
+        return false;
     }
     
+    NSLog(@"json: %@", ads);
     self.advices = [ads objectForKey:@"advices"];
     NSArray* colors = [ads objectForKey:@"colors"];
     
@@ -39,6 +40,7 @@
         UIColor* color = [[UIColor alloc] initWithRed:[r intValue]/255.f green:[g intValue]/255.f blue:[b intValue]/255.f alpha:1.f];
         [self.colors addObject:color];
     }
+    return true;
 }
 
 -(void)getLocalDataForView {
@@ -58,12 +60,14 @@
             NSLog(@"bad data");
             return;
         }
-        [self loadJSON:data];
+        BOOL good = [self loadJSON:data];
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationName" object:nil];
-        });
+        if (good) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationName" object:nil];
+            });
+        }
     }];
     [task resume];
 }

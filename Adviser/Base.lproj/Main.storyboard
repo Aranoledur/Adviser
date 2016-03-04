@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fgs-Jc-Ifb">
-                                <rect key="frame" x="42" y="122" width="236" height="24"/>
+                                <rect key="frame" x="42" y="142" width="236" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -28,7 +28,7 @@
                         <color key="backgroundColor" red="0.96470588235294119" green="0.92549019607843142" blue="0.64313725490196072" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="Fgs-Jc-Ifb" secondAttribute="centerY" constant="150" id="aBm-2z-HU7"/>
+                            <constraint firstAttribute="centerY" secondItem="Fgs-Jc-Ifb" secondAttribute="centerY" constant="130" id="aBm-2z-HU7"/>
                             <constraint firstAttribute="centerX" secondItem="Fgs-Jc-Ifb" secondAttribute="centerX" id="jpC-ex-HGX"/>
                             <constraint firstItem="Fgs-Jc-Ifb" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="26" id="rfO-Ag-WJO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Fgs-Jc-Ifb" secondAttribute="trailing" constant="26" id="rny-6e-dwN"/>
