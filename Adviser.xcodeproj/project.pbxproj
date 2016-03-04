@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94E4D13A1C89C923009E6C8F /* somefile.json in Resources */ = {isa = PBXBuildFile; fileRef = 94E4D1391C89C923009E6C8F /* somefile.json */; };
 		CEE581EC1BA95FD900AB4D9C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE581EB1BA95FD900AB4D9C /* main.m */; };
 		CEE581EF1BA95FD900AB4D9C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE581EE1BA95FD900AB4D9C /* AppDelegate.m */; };
 		CEE581F21BA95FD900AB4D9C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE581F11BA95FD900AB4D9C /* ViewController.m */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		94E4D1391C89C923009E6C8F /* somefile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = somefile.json; sourceTree = "<group>"; };
 		CEE581E61BA95FD900AB4D9C /* Adviser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Adviser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE581EA1BA95FD900AB4D9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEE581EB1BA95FD900AB4D9C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		CEE581E81BA95FD900AB4D9C /* Adviser */ = {
 			isa = PBXGroup;
 			children = (
+				94E4D1391C89C923009E6C8F /* somefile.json */,
 				CEE581ED1BA95FD900AB4D9C /* AppDelegate.h */,
 				CEE581EE1BA95FD900AB4D9C /* AppDelegate.m */,
 				CEE581F01BA95FD900AB4D9C /* ViewController.h */,
@@ -200,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEE581F51BA95FD900AB4D9C /* Main.storyboard in Resources */,
+				94E4D13A1C89C923009E6C8F /* somefile.json in Resources */,
 				CEE581FA1BA95FD900AB4D9C /* LaunchScreen.xib in Resources */,
 				CEE581F71BA95FD900AB4D9C /* Images.xcassets in Resources */,
 			);
@@ -416,6 +420,7 @@
 				CEE5820B1BA95FDA00AB4D9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CEE5820C1BA95FDA00AB4D9C /* Build configuration list for PBXNativeTarget "AdviserTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +429,7 @@
 				CEE5820E1BA95FDA00AB4D9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

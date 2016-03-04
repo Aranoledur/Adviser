@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
 
 @interface ViewController ()
 @property (nonatomic, strong, readwrite) NSArray* texts;
@@ -21,6 +22,14 @@
 @end
 
 @implementation ViewController
+
+-(void)awakeFromNib {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveData:) name:@"NotificationName" object:nil];
+}
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -59,6 +68,14 @@
     animationBack.type = kCATransitionFade;
     animationBack.duration = 0.75;
     [self.mainView.layer addAnimation:animationBack forKey:@"kCATransitionFade"];
+    self.mainView.backgroundColor = [self.backColors objectAtIndex:self.colorsIndex];
+}
+
+-(void)didReceiveData:(NSNotification *)notif {
+    AppDelegate* app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.texts = [[NSArray alloc] initWithArray:app.advices copyItems:YES];
+    self.backColors = [[NSArray alloc] initWithArray:app.colors copyItems:YES];
+    self.mainLabel.text = [self.texts objectAtIndex:self.textIndex];
     self.mainView.backgroundColor = [self.backColors objectAtIndex:self.colorsIndex];
 }
 

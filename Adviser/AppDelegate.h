@@ -11,6 +11,8 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, strong) NSMutableArray* colors;//UIColor
+@property (nonatomic, strong) NSArray* advices; //Strings
 
 
 @end

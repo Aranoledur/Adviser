@@ -9,14 +9,55 @@
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
-
 @end
 
 @implementation AppDelegate
 
+-(NSMutableArray *) colors {
+    if (!_colors) {
+        _colors = [NSMutableArray new];
+    }
+    return _colors;
+}
+
+-(void) getDataForView {
+    
+    NSURLSession* session = [NSURLSession sharedSession];
+    NSString* filePath = [[NSBundle mainBundle] pathForResource:@"somefile" ofType:@"json"];
+    NSURL* url = [NSURL fileURLWithPath:filePath];
+    NSURLSessionTask* task = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        if (!data) {
+            NSLog(@"bad data");
+            return;
+        }
+        
+        NSDictionary* ads = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        
+        self.advices = [ads objectForKey:@"advices"];
+        NSArray* colors = [ads objectForKey:@"colors"];
+        
+        [self.colors removeAllObjects];
+        for (NSDictionary* color in colors) {
+            
+            NSLog(@"dic %@", color);
+            NSNumber* r = [color objectForKey:@"r"];
+            NSNumber* g = [color objectForKey:@"g"];
+            NSNumber* b = [color objectForKey:@"b"];
+            UIColor* color = [[UIColor alloc] initWithRed:[r intValue]/255.f green:[g intValue]/255.f blue:[b intValue]/255.f alpha:1.f];
+            [self.colors addObject:color];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationName" object:nil];
+        });
+    }];
+    [task resume];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self getDataForView];
     return YES;
 }
 
@@ -32,6 +73,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [self getDataForView];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
