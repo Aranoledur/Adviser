@@ -17,7 +17,6 @@
 @property (nonatomic, assign) NSInteger colorsIndex;
 @property (weak, nonatomic) IBOutlet UILabel *mainLabel;
 @property (strong, nonatomic) IBOutlet UIView *mainView;
-@property (weak, nonatomic) IBOutlet UIButton *nextButton;
 
 @end
 
@@ -71,12 +70,15 @@
     self.mainView.backgroundColor = [self.backColors objectAtIndex:self.colorsIndex];
 }
 
+- (IBAction)respondToTapGesture:(id)sender {
+    [self nextButtonTouched:nil];
+}
+
 -(void)didReceiveData:(NSNotification *)notif {
     AppDelegate* app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.texts = [[NSArray alloc] initWithArray:app.advices copyItems:YES];
     self.backColors = [[NSArray alloc] initWithArray:app.colors copyItems:YES];
-    self.mainLabel.text = [self.texts objectAtIndex:self.textIndex];
-    self.mainView.backgroundColor = [self.backColors objectAtIndex:self.colorsIndex];
+    [self nextButtonTouched:nil];
 }
 
 @end

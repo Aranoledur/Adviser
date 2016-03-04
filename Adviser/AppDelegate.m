@@ -23,8 +23,8 @@
 -(void) getDataForView {
     
     NSURLSession* session = [NSURLSession sharedSession];
-    NSString* filePath = [[NSBundle mainBundle] pathForResource:@"somefile" ofType:@"json"];
-    NSURL* url = [NSURL fileURLWithPath:filePath];
+//    NSString* filePath = [[NSBundle mainBundle] pathForResource:@"somefile" ofType:@"json"];
+    NSURL* url = [NSURL URLWithString:@"https://raw.githubusercontent.com/Aranoledur/Adviser/master/Adviser/somefile.json"];
     NSURLSessionTask* task = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
         if (!data) {

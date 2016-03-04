@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -23,40 +24,32 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LmS-3U-6H7">
-                                <rect key="frame" x="246" y="489" width="32" height="30"/>
-                                <state key="normal" title="Next">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="nextButtonTouched:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="I6J-YI-Jab"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.92549019607843142" blue="0.64313725490196072" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="LmS-3U-6H7" secondAttribute="centerX" constant="-102" id="QeL-fo-MxF"/>
                             <constraint firstAttribute="centerY" secondItem="Fgs-Jc-Ifb" secondAttribute="centerY" constant="150" id="aBm-2z-HU7"/>
-                            <constraint firstItem="iPQ-D7-U5J" firstAttribute="top" secondItem="LmS-3U-6H7" secondAttribute="bottom" constant="49" id="hyn-si-DjL"/>
                             <constraint firstAttribute="centerX" secondItem="Fgs-Jc-Ifb" secondAttribute="centerX" id="jpC-ex-HGX"/>
                             <constraint firstItem="Fgs-Jc-Ifb" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="26" id="rfO-Ag-WJO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Fgs-Jc-Ifb" secondAttribute="trailing" constant="26" id="rny-6e-dwN"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="iuo-nh-s4d" appends="YES" id="Mpd-zH-3Vg"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="mainLabel" destination="Fgs-Jc-Ifb" id="Lvm-1B-hki"/>
                         <outlet property="mainView" destination="kh9-bI-dsS" id="3y9-q3-yj5"/>
-                        <outlet property="nextButton" destination="LmS-3U-6H7" id="Q6h-Vz-ICg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="iuo-nh-s4d">
+                    <connections>
+                        <action selector="respondToTapGesture:" destination="vXZ-lx-hvc" id="DvE-ka-KBJ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="162" y="406"/>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>
