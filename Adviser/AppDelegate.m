@@ -61,7 +61,7 @@
 }
 
 -(void)getLocalDataForView {
-    NSString* filePath = [[NSBundle mainBundle] pathForResource:@"somefile" ofType:@"json"];
+    NSString* filePath = [[NSBundle mainBundle] pathForResource:self.localFileName ofType:@"json"];
     
     NSData* data = [NSData dataWithContentsOfFile:filePath];
     [self loadJSON:data];
@@ -70,7 +70,7 @@
 -(void) getDataForView {
     
     NSURLSession* session = [NSURLSession sharedSession];
-    NSURL* url = [NSURL URLWithString:@"https://raw.githubusercontent.com/Aranoledur/Adviser/master/Adviser/somefile.json"];
+    NSURL* url = [NSURL URLWithString:self.fileURL];
     NSURLSessionTask* task = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
         if (!data) {
@@ -94,9 +94,10 @@
     NSString* locale = [[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2];
     if ([locale rangeOfString:@"ru"].location == NSNotFound) {
         self.localFileName = FileLocalNameEN;
-        self.fileURL = @"https://raw.githubusercontent.com/Aranoledur/Adviser/master/Adviser/somefile.json";
+        self.fileURL = @"https://raw.githubusercontent.com/Aranoledur/Adviser/master/Adviser/somefile_en.json";
     } else {
         self.localFileName = FileLocalNameRU;
+        self.fileURL = @"https://raw.githubusercontent.com/Aranoledur/Adviser/master/Adviser/somefile_ru.json";
     }
     [self getDataForView];
     [self getLocalDataForView];

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94C3DF5E1C9166A200DDF858 /* somefile_en.json in Resources */ = {isa = PBXBuildFile; fileRef = 94C3DF5C1C9166A200DDF858 /* somefile_en.json */; };
+		94C3DF5F1C9166A200DDF858 /* somefile_ru.json in Resources */ = {isa = PBXBuildFile; fileRef = 94C3DF5D1C9166A200DDF858 /* somefile_ru.json */; };
 		94E4D13A1C89C923009E6C8F /* somefile.json in Resources */ = {isa = PBXBuildFile; fileRef = 94E4D1391C89C923009E6C8F /* somefile.json */; };
 		CEE581EC1BA95FD900AB4D9C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE581EB1BA95FD900AB4D9C /* main.m */; };
 		CEE581EF1BA95FD900AB4D9C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE581EE1BA95FD900AB4D9C /* AppDelegate.m */; };
@@ -28,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		94C3DF5C1C9166A200DDF858 /* somefile_en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = somefile_en.json; sourceTree = "<group>"; };
+		94C3DF5D1C9166A200DDF858 /* somefile_ru.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = somefile_ru.json; sourceTree = "<group>"; };
 		94E4D1391C89C923009E6C8F /* somefile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = somefile.json; sourceTree = "<group>"; };
 		CEE581E61BA95FD900AB4D9C /* Adviser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Adviser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE581EA1BA95FD900AB4D9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				94E4D1391C89C923009E6C8F /* somefile.json */,
+				94C3DF5C1C9166A200DDF858 /* somefile_en.json */,
+				94C3DF5D1C9166A200DDF858 /* somefile_ru.json */,
 				CEE581ED1BA95FD900AB4D9C /* AppDelegate.h */,
 				CEE581EE1BA95FD900AB4D9C /* AppDelegate.m */,
 				CEE581F01BA95FD900AB4D9C /* ViewController.h */,
@@ -205,8 +211,10 @@
 			files = (
 				CEE581F51BA95FD900AB4D9C /* Main.storyboard in Resources */,
 				94E4D13A1C89C923009E6C8F /* somefile.json in Resources */,
+				94C3DF5F1C9166A200DDF858 /* somefile_ru.json in Resources */,
 				CEE581FA1BA95FD900AB4D9C /* LaunchScreen.xib in Resources */,
 				CEE581F71BA95FD900AB4D9C /* Images.xcassets in Resources */,
+				94C3DF5E1C9166A200DDF858 /* somefile_en.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +362,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Adviser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.easyverzilla.adviser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -366,6 +375,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Adviser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.easyverzilla.adviser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
