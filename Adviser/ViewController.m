@@ -36,6 +36,8 @@
     self.texts = [[NSArray alloc] initWithArray:app.advices copyItems:YES];
     self.backColors = [[NSArray alloc] initWithArray:app.colors copyItems:YES];
     
+    int fontSize = MAX([[UIScreen mainScreen] bounds].size.width * 0.06, 20);
+    self.mainLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:fontSize];
     self.mainLabel.text = [self.texts objectAtIndex:self.textIndex];
     self.mainView.backgroundColor = [self.backColors objectAtIndex:self.colorsIndex];
 }
