@@ -89,6 +89,29 @@
     [task resume];
 }
 
+-(void)scheduleLocalNotifications {
+    NSMutableArray* indices = [NSMutableArray new];
+    for (int k = 0; k < self.advices.count; ++k) {
+        [indices addObject:[[NSNumber alloc] initWithInt:k]];
+    }
+    [self shuffleArray:indices];
+    for (int i = 1; i <= 3; ++i) {
+        NSCalendar* calendar = [NSCalendar currentCalendar];
+        NSDateComponents* dateComp = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute fromDate:[NSDate new]];
+        dateComp.day += i;
+        for (int j = 0; j < 3; ++j) {
+            dateComp.hour = 9 + j*5;
+            if (i+j < indices.count) {
+                UILocalNotification* notification = [[UILocalNotification alloc] init];
+                notification.fireDate = [calendar dateFromComponents:dateComp];
+                int index = ((NSNumber *)indices[i+j]).intValue;
+                notification.alertBody = self.advices[index];
+                [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+            }
+        }
+    }
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     NSString* locale = [[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2];
@@ -112,11 +135,13 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [self scheduleLocalNotifications];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     [self getDataForView];
+    [application cancelAllLocalNotifications];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
