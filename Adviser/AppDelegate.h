@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) NSMutableArray* colors;//UIColor
-@property (nonatomic, strong) NSArray* advices; //Strings
+@property (nonatomic, strong) NSMutableArray* advices; //Strings
 
 
 @end

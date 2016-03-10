@@ -8,10 +8,26 @@
 
 #import "AppDelegate.h"
 
+#define FileLocalNameRU @"somefile_ru"
+#define FileLocalNameEN @"somefile_en"
+
 @interface AppDelegate ()
+@property (nonatomic, strong) NSString* localFileName;
+@property (nonatomic, strong) NSString* fileURL;
 @end
 
 @implementation AppDelegate
+
+- (void)shuffleArray:(NSMutableArray *)array
+{
+    NSUInteger count = [array count];
+    if (count < 1) return;
+    for (NSUInteger i = 0; i < count - 1; ++i) {
+        NSInteger remainingCount = count - i;
+        NSInteger exchangeIndex = i + arc4random_uniform((u_int32_t )remainingCount);
+        [array exchangeObjectAtIndex:i withObjectAtIndex:exchangeIndex];
+    }
+}
 
 -(NSMutableArray *) colors {
     if (!_colors) {
@@ -29,6 +45,7 @@
     }
     
     self.advices = [ads objectForKey:@"advices"];
+    [self shuffleArray:self.advices];
     NSArray* colors = [ads objectForKey:@"colors"];
     
     [self.colors removeAllObjects];
@@ -74,6 +91,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    NSString* locale = [[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2];
+    if ([locale rangeOfString:@"ru"].location == NSNotFound) {
+        self.localFileName = FileLocalNameEN;
+        self.fileURL = @"https://raw.githubusercontent.com/Aranoledur/Adviser/master/Adviser/somefile.json";
+    } else {
+        self.localFileName = FileLocalNameRU;
+    }
     [self getDataForView];
     [self getLocalDataForView];
     return YES;

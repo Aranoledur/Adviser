@@ -45,8 +45,8 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)nextButtonTouched:(id)sender {
-    self.textIndex = arc4random_uniform((u_int32_t)self.texts.count);
-    self.colorsIndex = arc4random_uniform((u_int32_t)self.backColors.count);
+    self.textIndex++;// = arc4random_uniform((u_int32_t)self.texts.count);
+    self.colorsIndex++;// = arc4random_uniform((u_int32_t)self.backColors.count);
     if(self.textIndex >= self.texts.count)
         self.textIndex = 0;
     if(self.colorsIndex >= self.backColors.count)
