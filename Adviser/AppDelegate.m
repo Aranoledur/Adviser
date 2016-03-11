@@ -124,6 +124,7 @@
     }
     [self getDataForView];
     [self getLocalDataForView];
+    
     return YES;
 }
 
