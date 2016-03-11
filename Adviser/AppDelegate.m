@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <Firebase/Firebase.h>
 
 #define FileLocalNameRU @"somefile_ru"
 #define FileLocalNameEN @"somefile_en"
@@ -112,6 +113,55 @@
     }
 }
 
+#define UIColorFromRGB(rgbValue) \
+[UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0x00FF00) >>  8))/255.0 \
+blue:((float)((rgbValue & 0x0000FF) >>  0))/255.0 \
+alpha:1.0]
+
+-(void)setupFirebase {
+    
+    [Firebase defaultConfig].persistenceEnabled = YES;
+
+    __weak AppDelegate* weakSelf = self;
+
+    Firebase *myRootRef = [[Firebase alloc] initWithUrl:@"https://omadviser.firebaseio.com"];
+    [myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSDictionary* root = snapshot.value;
+        
+        NSString* advicesKey = [self.localFileName compare:FileLocalNameEN] == NSOrderedSame ? @"advices_en" : @"advices_ru";
+        if ([root objectForKey:advicesKey]) {
+            [weakSelf.advices removeAllObjects];
+            weakSelf.advices = [root objectForKey:advicesKey];
+
+            NSIndexSet* indexSet = [weakSelf.advices indexesOfObjectsPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                return ![obj isKindOfClass:[NSString class]];
+            }];
+            [weakSelf.advices removeObjectsAtIndexes:indexSet];
+            [weakSelf shuffleArray:self.advices];
+        }
+        
+        if ([root objectForKey:@"colors"]) {
+            [weakSelf.colors removeAllObjects];
+            NSArray* colors = [root objectForKey:@"colors"];
+            for (NSString* colorStr in colors) {
+                if (![colorStr isKindOfClass:[NSString class]]) {
+                    continue;
+                }
+                unsigned result = 0;
+                NSScanner *scanner = [NSScanner scannerWithString:colorStr];
+                
+                [scanner setScanLocation:1]; // bypass '#' character
+                [scanner scanHexInt:&result];
+                UIColor *color = UIColorFromRGB(result);
+                [weakSelf.colors addObject: color];
+            }
+            [weakSelf shuffleArray:weakSelf.colors];
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationName" object:nil];
+    }];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     NSString* locale = [[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2];
@@ -122,8 +172,8 @@
         self.localFileName = FileLocalNameRU;
         self.fileURL = @"https://raw.githubusercontent.com/Aranoledur/Adviser/master/Adviser/somefile_ru.json";
     }
-    [self getDataForView];
     [self getLocalDataForView];
+    [self setupFirebase];
     
     return YES;
 }
@@ -141,7 +191,8 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    [self getDataForView];
+    [self shuffleArray:self.advices];
+    [self shuffleArray:self.colors];
     [application cancelAllLocalNotifications];
 }
 

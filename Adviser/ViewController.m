@@ -8,10 +8,11 @@
 
 #import "ViewController.h"
 #import "AppDelegate.h"
+#import <Firebase/Firebase.h>
 
 @interface ViewController ()
-@property (nonatomic, strong, readwrite) NSArray* texts;
-@property (nonatomic, strong, readwrite) NSArray* backColors;
+@property (nonatomic, strong, readwrite) NSMutableArray* texts;
+@property (nonatomic, strong, readwrite) NSMutableArray* backColors;
 
 @property (nonatomic, assign) NSInteger textIndex;
 @property (nonatomic, assign) NSInteger colorsIndex;
@@ -33,13 +34,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     AppDelegate* app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.texts = [[NSArray alloc] initWithArray:app.advices copyItems:YES];
-    self.backColors = [[NSArray alloc] initWithArray:app.colors copyItems:YES];
+    self.texts = [[NSMutableArray alloc] initWithArray:app.advices copyItems:YES];
+    self.backColors = [[NSMutableArray alloc] initWithArray:app.colors copyItems:YES];
     
     int fontSize = MAX([[UIScreen mainScreen] bounds].size.width * 0.06, 20);
     self.mainLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:fontSize];
     self.mainLabel.text = [self.texts objectAtIndex:self.textIndex];
     self.mainView.backgroundColor = [self.backColors objectAtIndex:self.colorsIndex];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,8 +77,8 @@
 
 -(void)didReceiveData:(NSNotification *)notif {
     AppDelegate* app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.texts = [[NSArray alloc] initWithArray:app.advices copyItems:YES];
-    self.backColors = [[NSArray alloc] initWithArray:app.colors copyItems:YES];
+    self.texts = [[NSMutableArray alloc] initWithArray:app.advices copyItems:YES];
+    self.backColors = [[NSMutableArray alloc] initWithArray:app.colors copyItems:YES];
 }
 
 @end
